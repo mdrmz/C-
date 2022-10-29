@@ -35,16 +35,16 @@ inline  void dergi::dergiiç(int a)
 {
 	if (a == 1)
 	{
-		cout << "Barcelona Ucl şampiyonu oldu";
+		cout << "Barcelona Ucl şampiyonu oldu" << endl;
 	}
 	else if (a == 2)
-		cout << "Covid -19 can almaya devam ediyor";
+		cout << "Covid -19 can almaya devam ediyor" << endl;
 	else if (a == 3)
 		cout << "seda sayan yine evlendi ";
 	else if (a == 4)
-		cout << "mehmet durmaz yeni buluşunu akşam kamuoyunu duyaracgını açıkladı";
+		cout << "mehmet durmaz yeni buluşunu akşam kamuoyunu duyaracgını açıkladı" << endl;
 	else if (a == 5)
-		cout << "bunlar boş iş geçin bacım";
+		cout << "bunlar boş iş geçin bacım",0 << endl;
 
 }
 
@@ -65,29 +65,29 @@ int dergi::icerik()
 	cin >> input;
 	if (input == 1)
 	{
-		cout << "spor şeçildi üçreti : 50 ₺";
-		return 50;
+		cout << "\nspor şeçildi üçreti : 50 ₺\n";
+		return 1;
 	}
 		
 	else if (input == 2)
 	{
-		cout << "spor şeçildi üçreti : 70 ₺";
-		return 70;
+		cout << "\nsaglik şeçildi üçreti : 70 ₺\n";
+		return 2;
 	}
 	else if (input == 3)
 	{
-		cout << "magazin şeçildi üçreti : 100 ₺";
-		return 100;
+		cout << "\nmagazin şeçildi üçreti : 100 ₺\n";
+		return 3;
 	}
 	else if (input == 4)
 	{
-		cout << "bilim şeçildi üçreti : 10 ₺";
-		return 10;
+		cout << "\nbilim şeçildi üçreti : 10 ₺\n";
+		return 4;
 	}
 	else if (input == 5)
 	{
-		cout << " boş işler(burç gibi) şeçildi üçreti : 5000 ₺";
-		return 5000;
+		cout << "\n boş işler(burç gibi) şeçildi üçreti : 5000 ₺\n";
+		return 5;
 	}
 	return 0;
 }
@@ -127,7 +127,8 @@ void users::puy(dergi drg)
 }
 void  users ::oku(dergi drg)
 {
-	drg.dergiiç(2);
+	int ücret = drg.icerik();
+	drg.dergiiç(ücret);
 }
 void users :: moveToTrash()
 {
@@ -167,7 +168,7 @@ int main()
 	cout << "1.kulanıcı oluştur" << endl;
 	cout << "2.kulanıcı sil" << endl;
 	cout << "3.kulanıcı düzenle" << endl;
-	cout << "çıkmak için 0 basın";
+	cout << "çıkmak için 0 basın\n";
 	cin >> input1;
 	int index = 0;
 	while (input1 != 0)
@@ -200,6 +201,8 @@ int main()
 
 		if (input1 == 3)
 		{
+			usr[0]->oku(drg);
+			
 			
 		}
 		cout << "\nyapmak istediginiz islemi secim" << endl;
