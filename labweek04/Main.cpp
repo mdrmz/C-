@@ -7,17 +7,17 @@ using namespace std;
 class dergi
 {
 public:
-	friend  void satis();
-	inline void dergiiç();
+	
+	inline void dergiiç(int);
 	int icerik();
 	void reklamVer();
 	
 	string name;
 	int date;
-	dergi(string name , int date) 
+	dergi() 
 	{
-		this->date = date;
-		this->name = name;
+		this->date = 2022;
+		this->name = "mehmet dergisi";
 	}
 	~dergi()
 	{
@@ -31,13 +31,26 @@ protected:
 	string lorem;
 };
 
-inline  void dergi::dergiiç()
+inline  void dergi::dergiiç(int a)
 {
-	cout << "ne yazım buraya";
+	if (a == 1)
+	{
+		cout << "Barcelona Ucl şampiyonu oldu";
+	}
+	else if (a == 2)
+		cout << "Covid -19 can almaya devam ediyor";
+	else if (a == 3)
+		cout << "seda sayan yine evlendi ";
+	else if (a == 4)
+		cout << "mehmet durmaz yeni buluşunu akşam kamuoyunu duyaracgını açıkladı";
+	else if (a == 5)
+		cout << "bunlar boş iş geçin bacım";
+
 }
+
 void dergi::reklamVer()
 {
-	cout << "tr nin en kaliteli dergisi";
+	cout << "TRRTRTRTRTRT en Kaliteli dertgisisisisisi" << endl;
 }
 
 int dergi::icerik()
@@ -81,8 +94,11 @@ int dergi::icerik()
 
 class users 
 {
+
 	friend dergi;
+
 public:
+
 	void puy(dergi drg);
 	void oku(dergi drg);
 	void moveToTrash();
@@ -111,7 +127,7 @@ void users::puy(dergi drg)
 }
 void  users ::oku(dergi drg)
 {
-	drg.dergiiç();
+	drg.dergiiç(2);
 }
 void users :: moveToTrash()
 {
@@ -123,32 +139,74 @@ void nealdı(dergi drg, users usr)
 	usr.puy(drg);
 }
 
+
+void sil(int del, int size, users* usr[])
+{
+	int i, inputdel;
+	for (i = 0; i < size - 1; i++)
+	{
+		if (usr[i]->old == del)
+			usr[i] = NULL;
+	}
+}
+
 int main()
 {
-	users* usr[10];
-	int input1;
+	const int arrylenght = 100;
+	users* usr[arrylenght];
+	
+	setlocale(LC_ALL,"Turkish");
 
-	cout << "yapmak istediginiz islemi secim" << endl;
+	int input1;
+	dergi drg;
+
+	drg.reklamVer();
+
+
+	cout <<"\nyapmak istediginiz islemi secim" << endl;
 	cout << "1.kulanıcı oluştur" << endl;
 	cout << "2.kulanıcı sil" << endl;
 	cout << "3.kulanıcı düzenle" << endl;
+	cout << "çıkmak için 0 basın";
 	cin >> input1;
-	switch (input1)
+	int index = 0;
+	while (input1 != 0)
 	{
-	case 1:
-	{
-		string name;
-		int old, index = 0;
-		cout << "isim girin" << endl ;
-		cin >> name;
-		cin >> old;
-		usr[index]->usersName
+		
+		if (input1 == 1)
+		{
+			
+			string name;
+			int old;
+			cout << "isim girin" << endl;
+			cin >> name;
+			cout << "yas girin" << endl;
+			cin >> old;
+			usr[index] = new users(name, old);
+			cout << "kulancı oluştu" << endl;
+			index++;
+		}
+		if (input1 == 2)
+		{
+			int del;
+			for (int i = 0; i < arrylenght - 1; i++)
+			{
+				cout << usr[i]->usersName << "   kodu : ";
+				cout << i << endl;
+			}
+			cin >> del;
+			sil(del, arrylenght, usr);
+		}	
 
-
-		break;
+		if (input1 == 3)
+		{
+			
+		}
+		cout << "\nyapmak istediginiz islemi secim" << endl;
+		cout << "1.kulanıcı oluştur" << endl;
+		cout << "2.kulanıcı sil" << endl;
+		cout << "3.kulanıcı düzenle" << endl;
+		cout << "çıkmak için 0 basın" << endl;
+		cin >> input1;
 	}
-	default:
-		break;
-	}
-	
 }
