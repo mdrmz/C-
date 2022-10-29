@@ -35,7 +35,7 @@ inline  void dergi::dergiiç(int a)
 {
 	if (a == 1)
 	{
-		cout << "Barcelona Ucl şampiyonu oldu" << endl;
+		cout << "Real Madrid Ucl şampiyonu oldu" << endl;
 	}
 	else if (a == 2)
 		cout << "Covid -19 can almaya devam ediyor" << endl;
@@ -44,7 +44,7 @@ inline  void dergi::dergiiç(int a)
 	else if (a == 4)
 		cout << "mehmet durmaz yeni buluşunu akşam kamuoyunu duyaracgını açıkladı" << endl;
 	else if (a == 5)
-		cout << "bunlar boş iş geçin bacım",0 << endl;
+		cout << "bunlar boş iş geçin bacım" << endl;
 
 }
 
@@ -147,7 +147,7 @@ void sil(int del, int size, users* usr[])
 	for (i = 0; i < size - 1; i++)
 	{
 		if (usr[i]->old == del)
-			usr[i] = NULL;
+			usr[i]->usersName = "silindi";
 	}
 }
 
@@ -168,7 +168,6 @@ int main()
 	cout << "1.kulanıcı oluştur" << endl;
 	cout << "2.kulanıcı sil" << endl;
 	cout << "3.kulanıcı düzenle" << endl;
-	cout << "çıkmak için 0 basın\n";
 	cin >> input1;
 	int index = 0;
 	while (input1 != 0)
@@ -190,13 +189,22 @@ int main()
 		if (input1 == 2)
 		{
 			int del;
-			for (int i = 0; i < arrylenght - 1; i++)
+			for (int i = 0; i < index ; i++)
 			{
-				cout << usr[i]->usersName << "   kodu : ";
-				cout << i << endl;
+				cout << usr[i]->usersName << "   kodu : " ;
+				cout << usr[i]->old << endl;
+			
 			}
 			cin >> del;
-			sil(del, arrylenght, usr);
+			sil(del, index, usr);
+			
+			for (int i = 0; i < index; i++)
+			{
+				cout << usr[i]->usersName << "   kodu : ";
+				cout << usr[i]->old << endl;
+
+			}
+			
 		}	
 
 		if (input1 == 3)
