@@ -98,7 +98,7 @@ class users
 	friend dergi;
 
 public:
-
+	users* next;
 	void puy(dergi drg);
 	void oku(dergi drg);
 	void moveToTrash();
@@ -141,18 +141,12 @@ void nealdı(dergi drg, users usr)
 }
 
 
-void sil(int del, int size, users* usr[])
-{
-	int i, inputdel;
-	for (i = 0; i < size - 1; i++)
-	{
-		if (usr[i]->old == del)
-			usr[i]->usersName = "silindi";
-	}
-}
+
 
 int main()
 {
+	users* head;
+	users* tmp;
 	const int arrylenght = 100;
 	users* usr[arrylenght];
 	
@@ -172,10 +166,10 @@ int main()
 	int index = 0;
 	while (input1 != 0)
 	{
-		
+
 		if (input1 == 1)
 		{
-			
+
 			string name;
 			int old;
 			cout << "isim girin" << endl;
@@ -184,30 +178,46 @@ int main()
 			cin >> old;
 			usr[index] = new users(name, old);
 			cout << "kulancı oluştu" << endl;
+			usr[index]->next = usr[index + 1];
 			index++;
 		}
+		
 		if (input1 == 2)
 		{
-			int del;
-			for (int i = 0; i < index ; i++)
-			{
-				cout << usr[i]->usersName << "   kodu : " ;
-				cout << usr[i]->old << endl;
-			
-			}
-			cin >> del;
-			sil(del, index, usr);
-			
-			for (int i = 0; i < index; i++)
-			{
-				cout << usr[i]->usersName << "   kodu : ";
-				cout << usr[i]->old << endl;
+			int a;
+			head = usr[0];
+			cout << "Silmek istediginiz  deger girin";
+			cin >> a;
 
+			if (usr[0]->old == a)
+			{
+				usr[0] = usr[0]->next;
 			}
-			
-		}	
+			tmp = head;
+			head = head->next;
+			while (head != NULL)
+			{
+				if (head->old == a)
+				{
+					tmp->next = head->next;
+
+				}
+				tmp = head;
+				head = head->next;
+			}
+
+		}
 
 		if (input1 == 3)
+
+		{
+			head = usr[0];
+			while (head != NULL) {
+				cout << head->old << " " << head->usersName << endl;
+				head = head->next;
+			}
+		}
+		if (input1 == 4)
 		{
 			usr[0]->oku(drg);
 			
@@ -221,3 +231,56 @@ int main()
 		cin >> input1;
 	}
 }
+//
+//class linklist
+//{
+//	users* head;
+//	users* son;
+//	users* tmp;
+//public:
+//	void add(users* newnode)
+//	{
+//		if (head == NULL)
+//		{
+//			head = son = newnode;
+//		}
+//		else
+//		{
+//			son->next = newnode;
+//			son = newnode;
+//		}
+//	}
+//
+//	void del()
+//	{
+//		int a;
+//		cout << "Silmek istediginiz  deger girin";
+//		cin >> a;
+//
+//		if (head->old == a)
+//		{
+//			head = head->next;
+//		}
+//		tmp = head;
+//		head = head->next;
+//		while (head != NULL)
+//		{
+//			if (head->old == a)
+//			{
+//				tmp->next = head->next;
+//
+//			}
+//			tmp = head;
+//			head = head->next;
+//		}
+//	}
+//	void list()
+//	{
+//		users* gez;
+//		for (gez = head; gez != NULL; gez = gez->next)
+//		{
+//			cout << gez->old << " " << gez->usersName << endl;
+//
+//		}
+//	}
+//};
