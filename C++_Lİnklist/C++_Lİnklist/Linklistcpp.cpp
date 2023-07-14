@@ -11,7 +11,7 @@ public:
     Node* next;
 };
 
-int main() {
+int main() { 
     Node* head;
     Node* tmp;
     Node* one = NULL;
@@ -53,7 +53,7 @@ int main() {
     tmp = head;
     head = head->next;
     while (head != NULL)
-    {
+    {           
         if (head->value == a)
         {
             tmp->next = head->next;
